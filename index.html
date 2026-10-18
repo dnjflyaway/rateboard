@@ -18,6 +18,8 @@ header{display:flex;align-items:center;justify-content:space-between;gap:20px;ma
 .head-right{display:flex;align-items:center;gap:10px}.live{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:9px 13px;white-space:nowrap}
 .dot{--dotc:#21a67a;height:7px;width:7px;background:var(--dotc);border-radius:50%;box-shadow:0 0 0 3px color-mix(in srgb,var(--dotc) 22%,transparent);flex:none}.dot.warn{--dotc:var(--warn)}.dot.bad{--dotc:var(--down)}
 .fb-pill{height:36px;border-radius:99px;border:0;background:var(--greenbg);color:var(--green);font-weight:700;font-size:13px;padding:0 14px;white-space:nowrap}.fb-pill:hover{background:color-mix(in srgb,var(--green) 22%,var(--panel))}.fb-foot{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin:30px 0 0;padding:18px;border:1px dashed var(--line);border-radius:16px;color:var(--muted);font-size:13px}
+.theme-switch{display:flex;align-items:center;height:38px;padding:4px;border-radius:99px;border:1px solid var(--line);background:var(--panel);flex:none}.theme-switch:hover{border-color:var(--hoverline)}.sw-ic{width:28px;height:28px;display:grid;place-items:center;border-radius:99px;font-size:15px;line-height:1;color:var(--faint);transition:background .18s,color .18s}.theme-switch[data-mode=light] .sun,.theme-switch[data-mode=dark] .moon{background:var(--ink);color:var(--bg)}
+.theme-foot{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0 0;font-size:13px;color:var(--muted)}
 .theme-btn{height:36px;width:36px;border-radius:99px;border:1px solid var(--line);background:var(--panel);font-size:16px;line-height:1;display:grid;place-items:center}.theme-btn:hover{border-color:var(--hoverline)}
 .alertbar{display:grid;gap:8px;margin:0 0 16px}.alertbar .a{display:flex;align-items:center;gap:10px;background:color-mix(in srgb,var(--star) 14%,var(--panel));border:1px solid color-mix(in srgb,var(--star) 55%,var(--line));border-radius:12px;padding:10px 14px;font-size:13px}.alertbar .a span{flex:1}.alertbar button{border:0;background:transparent;font-weight:700;font-size:12px;color:var(--muted);padding:4px 8px;border-radius:7px}.alertbar button:hover{background:var(--soft2)}
 .combo{position:relative;scroll-margin-top:12px}.combo-hidden{display:none!important}.combo-in{width:100%;text-overflow:ellipsis;cursor:text;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 17px) 18px,calc(100% - 12px) 18px;background-size:5px 5px;background-repeat:no-repeat;padding-right:30px!important}
@@ -64,7 +66,7 @@ dialog{border:1px solid var(--line);border-radius:20px;padding:0;background:var(
 .alert-form{display:grid;grid-template-columns:1fr 1fr auto;gap:8px}.hint{font-size:11px;color:var(--muted);margin:8px 0 0}.dlg-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
 @media(max-width:820px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shell{padding:23px 16px 35px}header{margin-bottom:24px}}
 @media(max-width:620px){.stats{grid-template-columns:repeat(2,1fr)}.alert-form{grid-template-columns:1fr 1fr}.alert-form .btn{grid-column:1/-1}}
-@media(max-width:520px){.subtitle{display:none}.head-right{gap:8px}.summary{flex-wrap:wrap}.summary-right{justify-content:space-between;width:100%}.seg{flex:1}.seg button{flex:1;padding:8px 6px}.spark,.trend-empty{width:104px;height:40px}.grid{grid-template-columns:1fr}.toolbar{padding:14px}.field{flex:1;min-width:125px}.spacer{display:none}.toolbar .btn{flex:1}.card{padding:16px 18px 18px}.convert-row{grid-template-columns:1fr 36px 1fr;gap:6px}.live{font-size:0;padding:11px;gap:0}.rate{font-size:30px}.ibtn{width:34px;height:34px}
+@media(max-width:520px){.subtitle{display:none}.logo{width:36px;height:36px;font-size:16px;border-radius:11px}.brand{gap:9px}.brandname{font-size:17px}.fb-pill{padding:0 12px}.head-right{gap:8px}.summary{flex-wrap:wrap}.summary-right{justify-content:space-between;width:100%}.seg{flex:1}.seg button{flex:1;padding:8px 6px}.spark,.trend-empty{width:104px;height:40px}.grid{grid-template-columns:1fr}.toolbar{padding:14px}.field{flex:1;min-width:125px}.spacer{display:none}.toolbar .btn{flex:1}.card{padding:16px 18px 18px}.convert-row{grid-template-columns:1fr 36px 1fr;gap:6px}.live{font-size:0;padding:11px;gap:0}.rate{font-size:30px}.ibtn{width:34px;height:34px}
  dialog{margin:auto 0 0;width:100%;max-width:100%;border-radius:20px 20px 0 0;max-height:92vh}.dlg-in{padding:18px 16px 24px}.chart{height:190px}}
 @media(max-width:360px){.card-body{flex-wrap:wrap}.trend{align-items:center;width:100%;flex-direction:row;justify-content:space-between}}
 @media(prefers-reduced-motion:reduce){.trend-empty.loading{animation:none}.card{transition:none}}
@@ -72,7 +74,7 @@ dialog{border:1px solid var(--line);border-radius:20px;padding:0;background:var(
 </head>
 <body><main class="shell">
 <header><div class="brand"><div class="logo">R</div><div><div class="brandname">rate<span>board</span></div><div class="subtitle">Your world, at a glance.</div></div></div>
- <div class="head-right"><button class="fb-pill" id="fbBtn" title="Send feedback"><span aria-hidden="true">✉</span> Feedback</button><button class="theme-btn" id="themeBtn" aria-label="Theme: auto" title="Theme: auto">◐</button><div class="live"><span class="dot" id="dot"></span><span id="liveText">Rates loading</span></div></div></header>
+ <div class="head-right"><button class="fb-pill" id="fbBtn" title="Send feedback"><span aria-hidden="true">✉</span> Feedback</button><button class="theme-switch" id="themeBtn" role="switch" aria-checked="false" aria-label="Dark mode"><span class="sw-ic sun" aria-hidden="true">☀&#xFE0E;</span><span class="sw-ic moon" aria-hidden="true">☾</span></button><div class="live"><span class="dot" id="dot"></span><span id="liveText">Rates loading</span></div></div></header>
 <div class="alertbar" id="alertBar" hidden></div>
 <section id="converter">
  <div class="panel"><h3>Quick converter</h3><p class="desc">Convert an amount using the latest available reference rate.</p><div class="convert-row">
@@ -95,6 +97,7 @@ dialog{border:1px solid var(--line);border-radius:20px;padding:0;background:var(
 <p class="legend" id="legend"></p>
 <section class="grid" id="grid" aria-live="polite"></section>
 <div class="fb-foot"><span>Got an idea or spotted a bug?</span><button class="btn btn-light" id="fbBtn2" type="button">✉ Send feedback</button></div>
+<div class="theme-foot"><span>Appearance</span><div class="seg" id="themeSeg" role="group" aria-label="Theme"><button data-theme-set="auto" aria-pressed="false">Auto</button><button data-theme-set="light" aria-pressed="false">Light</button><button data-theme-set="dark" aria-pressed="false">Dark</button></div></div>
 </main>
 <dialog id="detail" aria-labelledby="dTitle"></dialog>
 <dialog id="fb" aria-labelledby="fbTitle"><form class="dlg-in" id="fbForm">
@@ -316,8 +319,9 @@ function wireDetail(){const dlg=$("detail");
 /* ---------- range, theme ---------- */
 function syncRangeButtons(){document.querySelectorAll("[data-range]").forEach(x=>x.setAttribute("aria-pressed",String(Number(x.dataset.range)===range)))}
 function setRange(r){range=r;store.set("rateboard.range",r);syncRangeButtons();render()}
-const THEMES=["auto","light","dark"],ICON={auto:"◐",light:"☀",dark:"☾"};
-function applyTheme(t){if(t==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=t;const b=$("themeBtn");b.textContent=ICON[t];b.title=b.ariaLabel="Theme: "+t}
+const THEMES=["auto","light","dark"],darkMQ=matchMedia("(prefers-color-scheme: dark)");
+const curTheme=()=>{const t=store.get("rateboard.theme","auto");return THEMES.includes(t)?t:"auto"},effTheme=t=>t==="auto"?(darkMQ.matches?"dark":"light"):t;
+function applyTheme(t){if(t==="auto")delete document.documentElement.dataset.theme;else document.documentElement.dataset.theme=t;const e=effTheme(t),b=$("themeBtn");b.dataset.mode=e;b.setAttribute("aria-checked",String(e==="dark"));b.title=`Switch to ${e==="dark"?"light":"dark"} mode`;document.querySelectorAll("[data-theme-set]").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.themeSet===t)))}
 
 /* ---------- converter ---------- */
 const saveConv=()=>store.set("rateboard.converter",{amount:$("amount").value,from:$("from").value,to:$("to").value});
@@ -417,8 +421,11 @@ function init(){
  fillSelect($("from"),all,CURRENCIES[conv?.from]?conv.from:b);fillSelect($("to"),all,CURRENCIES[conv?.to]?conv.to:(watchlist.find(c=>c!==b)||"USD"));
  if(conv&&conv.amount!==undefined&&conv.amount!=="")$("amount").value=conv.amount;
  ["base","addCurrency"].forEach(id=>makeCombo($(id)));["from","to"].forEach(id=>makeCombo($(id),()=>[base(),...visible()]));
- applyTheme(THEMES.includes(store.get("rateboard.theme","auto"))?store.get("rateboard.theme","auto"):"auto");
- $("themeBtn").addEventListener("click",()=>{const t=THEMES[(THEMES.indexOf(store.get("rateboard.theme","auto"))+1)%3];store.set("rateboard.theme",t);applyTheme(t)});
+ applyTheme(curTheme());
+ const setTheme=t=>{store.set("rateboard.theme",t);applyTheme(t)};
+ $("themeBtn").addEventListener("click",()=>setTheme(effTheme(curTheme())==="dark"?"light":"dark"));
+ $("themeSeg").addEventListener("click",e=>{const b=e.target.closest("[data-theme-set]");if(b)setTheme(b.dataset.themeSet)});
+ darkMQ.addEventListener("change",()=>applyTheme(curTheme()));
  document.addEventListener("click",e=>{const r=e.target.closest("[data-range]");if(r)setRange(Number(r.dataset.range));const a=e.target.closest("[data-ack]");if(a){if(alerts[a.dataset.ack]){alerts[a.dataset.ack].ack=true;saveAlerts()}renderAlertBar()}});
  wireGrid();wireDetail();wireFeedback();syncRangeButtons();
  $("base").addEventListener("change",()=>{store.set("rateboard.base",base());fetchSeq++;loadCached(base());render();convert();fetchRates()});
