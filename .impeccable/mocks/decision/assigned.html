@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=390">
+<title>Rateboard — The Docket</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f3ec;--ink:#1c1b19;--mute:#6f6a60;--green:#16855f;--red:#c8423b;--rule:#d9d3c5}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:390px;height:844px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;font-variant-numeric:tabular-nums}
+.wrap{padding:18px 20px 0}
+.sc{font-family:"IBM Plex Sans Condensed",sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+header{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--ink)}
+.mark{font-weight:600;font-size:16px;letter-spacing:-.02em}
+.mark span{color:var(--green)}
+.pill{font-size:12px;border:1px solid var(--rule);border-radius:99px;padding:3px 9px;color:var(--mute)}
+.pill b{color:var(--green);font-weight:400}
+.meta{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--rule)}
+.row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:end;margin-top:14px}
+label{display:block;margin-bottom:4px}
+.amt{grid-column:1/-1}
+input,select{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0;width:100%;padding:6px 0;appearance:none;-webkit-appearance:none}
+input{font-size:22px;font-weight:500}
+select{font-size:15px;font-weight:500;background:linear-gradient(45deg,transparent 50%,var(--ink) 50%) right 4px center/6px 6px no-repeat}
+.swap{font:inherit;font-size:16px;width:36px;height:34px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:0;cursor:pointer}
+.total{margin-top:22px;border-top:1px solid var(--ink);padding-top:10px}
+.total .sc{display:flex;justify-content:space-between}
+.big{font-size:64px;font-weight:500;letter-spacing:-.045em;line-height:1;margin:8px 0 4px}
+.big small{font-size:28px;letter-spacing:-.02em;vertical-align:.9em;margin-right:2px}
+.lines{list-style:none;margin-top:10px;border-top:1px dashed var(--rule)}
+.lines li{display:flex;align-items:baseline;gap:6px;padding:5px 0;font-size:13px}
+.lines li i{flex:1;border-bottom:1.5px dotted var(--mute);transform:translateY(-3px);opacity:.6}
+.note{font-size:12px;color:var(--mute);padding:6px 0 0}
+.note::before{content:"* "}
+.actions{display:flex;gap:8px;margin-top:12px}
+.btn{font:inherit;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);border-radius:0;cursor:pointer;flex:1}
+.btn.ghost{background:transparent;color:var(--ink);flex:0 0 auto}
+.perf{height:12px;margin:22px -20px 0;background:
+ linear-gradient(135deg,var(--paper) 6px,transparent 0) 0 0/12px 12px repeat-x,
+ linear-gradient(225deg,var(--paper) 6px,transparent 0) 0 0/12px 12px repeat-x,var(--rule)}
+.perf2{height:6px;margin:0 -20px;border-top:1px dashed var(--rule)}
+.wl{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.wl h2{font-size:15px;font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--ink)}
+.seg button{font:inherit;font-size:12px;padding:4px 10px;border:0;background:transparent;color:var(--ink);cursor:pointer}
+.seg button+button{border-left:1px solid var(--ink)}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+th{text-align:left;font-weight:400;padding-bottom:6px;border-bottom:1px solid var(--ink)}
+th.r,td.r{text-align:right}
+td{padding:11px 0;border-bottom:1px dashed var(--rule);vertical-align:middle}
+td .c{font-weight:600}
+td .n{display:block;font-size:12px;color:var(--mute)}
+.up{color:var(--green)}.dn{color:var(--red)}
+svg{display:block}
+</style></head>
+<body><div class="wrap">
+<header>
+  <div class="mark">rateboard<span>.</span></div>
+  <div class="pill"><b>●</b> Updated 2m ago</div>
+</header>
+<div class="meta sc"><span>Docket No. 004127</span><span>Sun 1 Nov 2026 · 09:42</span></div>
+
+<form class="row" aria-label="Convert">
+  <div class="amt"><label class="sc" for="amt">Amount</label><input id="amt" inputmode="decimal" value="100"></div>
+  <div><label class="sc" for="from">From</label>
+    <select id="from"><option>🇦🇺 AUD</option><option>🇺🇸 USD</option><option>🇪🇺 EUR</option></select></div>
+  <button type="button" class="swap" aria-label="Swap currencies">⇄</button>
+  <div><label class="sc" for="to">To</label>
+    <select id="to"><option>🇺🇸 USD</option><option>🇦🇺 AUD</option><option>🇬🇧 GBP</option></select></div>
+</form>
+
+<section class="total" aria-live="polite">
+  <div class="sc"><span>Total</span><span>A$100.00 → USD</span></div>
+  <div class="big"><small>US$</small>70.31</div>
+  <ul class="lines">
+    <li><span>Rate</span><i></i><span>1 AUD = 0.7031 USD</span></li>
+    <li><span>Rate date</span><i></i><span>31 Oct 2026</span></li>
+    <li><span>Source</span><i></i><span>ExchangeRate-API</span></li>
+  </ul>
+  <p class="note">Mid-market — banks add a margin</p>
+  <div class="actions">
+    <button class="btn" type="button">Copy total</button>
+    <button class="btn ghost" type="button">☆ Watch</button>
+  </div>
+</section>
+
+<div class="perf" role="separator"></div>
+<div class="perf2"></div>
+
+<div class="wl">
+  <h2>Your watchlist</h2>
+  <div class="seg" role="group" aria-label="Period">
+    <button type="button" aria-pressed="true">7D</button><button type="button" aria-pressed="false">30D</button><button type="button" aria-pressed="false">90D</button>
+  </div>
+</div>
+<table>
+  <thead><tr><th class="sc">Per A$1</th><th class="sc">7D</th><th class="sc r">Rate</th><th class="sc r">Chg</th></tr></thead>
+  <tbody>
+  <tr><td><span class="c">🇪🇺 EUR</span><span class="n">Euro</span></td>
+    <td><svg width="64" height="20" viewBox="0 0 64 20"><polyline fill="none" stroke="#16855f" stroke-width="1.5" points="0,15 10,14 20,16 30,11 40,12 50,7 64,4"/></svg></td>
+    <td class="r">0.6295</td><td class="r up">▲ +2.21%</td></tr>
+  <tr><td><span class="c">🇬🇧 GBP</span><span class="n">Pound sterling</span></td>
+    <td><svg width="64" height="20" viewBox="0 0 64 20"><polyline fill="none" stroke="#c8423b" stroke-width="1.5" points="0,8 10,9 20,7 30,10 40,9 50,12 64,11"/></svg></td>
+    <td class="r">0.5247</td><td class="r dn">▼ −0.18%</td></tr>
+  <tr><td><span class="c">🇯🇵 JPY</span><span class="n">Japanese yen</span></td>
+    <td><svg width="64" height="20" viewBox="0 0 64 20"><polyline fill="none" stroke="#16855f" stroke-width="1.5" points="0,13 10,12 20,14 30,10 40,11 50,9 64,8"/></svg></td>
+    <td class="r">107.4</td><td class="r up">▲ +0.90%</td></tr>
+  </tbody>
+</table>
+</div></body></html>
